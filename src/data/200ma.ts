@@ -66,14 +66,10 @@ export function getWeightColor(weight: number, alpha: number = 1): string {
 export function prepareChartData(data: ChartDataPoint[]) {
   const labels = data.map((item) => item.date);
 
-  // Calculate median weight
+  // Calculate 75th percentile weight
   const weights = data.map((item) => item.modelWeight).sort((a, b) => a - b);
-  const medianWeight = weights[Math.floor(weights.length / 2)];
-
-  // Create point colors based on whether weight is above median
-  const pointColors = data.map((item) =>
-    item.modelWeight > medianWeight ? 'rgba(0, 255, 0, 0.8)' : 'rgba(255, 0, 0, 0.8)'
-  );
+  const percentile75Index = Math.floor(weights.length * 0.75);
+  const percentile75Weight = weights[percentile75Index];
 
   return {
     labels,
@@ -81,14 +77,35 @@ export function prepareChartData(data: ChartDataPoint[]) {
       {
         label: 'Bitcoin Price',
         data: data.map((item) => item.bitcoinPrice),
-        borderColor: 'rgba(128, 128, 128, 1)', // Gray border for the line
+        borderColor: function (context: any) {
+          // Color line segments based on model weight
+          if (context.type === 'data') {
+            const index = context.dataIndex;
+            if (index < data.length) {
+              return data[index].modelWeight > percentile75Weight
+                ? 'rgb(0, 128, 0)' // Green for higher allocation (matches legend)
+                : 'rgb(255, 0, 0)'; // Red for standard allocation (matches legend)
+            }
+          }
+          return 'rgba(128, 128, 128, 1)'; // Default gray
+        },
+        segment: {
+          borderColor: function (ctx: any) {
+            // Color each line segment based on the starting point's weight
+            const startIndex = ctx.p0DataIndex;
+            if (startIndex < data.length) {
+              return data[startIndex].modelWeight > percentile75Weight
+                ? 'rgb(0, 128, 0)' // Green for higher allocation (matches legend)
+                : 'rgb(255, 0, 0)'; // Red for standard allocation (matches legend)
+            }
+            return 'rgba(128, 128, 128, 1)';
+          },
+        },
         backgroundColor: 'rgba(128, 128, 128, 0.1)',
-        pointBackgroundColor: pointColors,
-        pointBorderColor: pointColors,
-        pointRadius: 3,
+        pointRadius: 0, // Remove points to emphasize colored line
         yAxisID: 'y-price',
         tension: 0.1,
-        borderWidth: 1,
+        borderWidth: 3, // Thicker line to show colors better
       },
     ],
   };
@@ -104,7 +121,7 @@ export const chartOptions = {
   plugins: {
     title: {
       display: true,
-      text: 'Bitcoin Price Over Time (Green = High Model Weight, Red = Low Model Weight)',
+      text: 'BTC-USD (2020-2024)',
     },
     legend: {
       display: false,
@@ -127,7 +144,7 @@ export const chartOptions = {
       position: 'left' as const,
       title: {
         display: true,
-        text: 'Bitcoin Price (USD)',
+        text: 'BTC-USD',
       },
       ticks: {
         callback: function (value: any) {

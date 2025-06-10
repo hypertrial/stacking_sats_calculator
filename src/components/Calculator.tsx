@@ -19,13 +19,24 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 // Sub-components
 const Disclaimer: React.FC = () => (
-  <div className="calculator-disclaimer-section">
-    <div className="disclaimer">
-      <h3>Important Disclaimer</h3>
+  <div className="page-disclaimer">
+    <div className="disclaimer-banner">
+      <h3>Disclaimer</h3>
       <p>
-        The Stacking Sats visualizations are provided for informational and educational purposes
-        only. They do not constitute financial advice. Do your own research.
+        Stacking Sats is provided for informational and educational purposes only. It does not
+        constitute financial advice. Do your own research.
       </p>
+    </div>
+  </div>
+);
+
+const PerformanceMetric: React.FC = () => (
+  <div className="performance-metric-compact">
+    <div className="performance-box-small">
+      <div className="metric-value-compact">
+        <span className="percentage-small">+20.58%</span>
+        <p className="metric-description-small">Increased Bitcoin bought vs standard DCA</p>
+      </div>
     </div>
   </div>
 );
@@ -66,17 +77,17 @@ const ChartSection: React.FC<{
 
   return (
     <div className="calculator-results-section">
-      <div className="chart-with-legend">
-        <div className="chart-container">
+      <div className="chart-with-legend-vertical">
+        <div className="chart-container-full">
           <Line data={chartData} options={chartOptions} />
         </div>
-        <div className="chart-info">
+        <div className="chart-info-bottom">
           <ul>
             <li>
-              <span style={{ color: 'green' }}>●</span> High weight periods
+              <span style={{ color: 'green' }}>●</span> Higher DCA Allocation
             </li>
             <li>
-              <span style={{ color: 'red' }}>●</span> Low weight periods
+              <span style={{ color: 'red' }}>●</span> Standard DCA Allocation
             </li>
           </ul>
         </div>
@@ -93,10 +104,10 @@ const Calculator: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const containerClass = isTinyMobile
-    ? 'home-container home-container-tiny'
+    ? 'home-container home-container-tiny has-page-disclaimer'
     : isSmallMobile
-    ? 'home-container home-container-small'
-    : 'home-container';
+    ? 'home-container home-container-small has-page-disclaimer'
+    : 'home-container has-page-disclaimer';
 
   // Load chart data on component mount
   useEffect(() => {
@@ -120,30 +131,18 @@ const Calculator: React.FC = () => {
 
   return (
     <div className={containerClass} data-testid="calculator-container">
+      <Disclaimer />
+
       <div className="resources-title">
         <img src="/hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
-        <h1>Stacking Sats</h1>
-        <p>Optimizing Bitcoin Dollar Cost Averaging</p>
+        <h1>Stacking Sats - Beta Version 0.1</h1>
+        <p>Optimizing Bitcoin Dollar Cost Averaging (DCA)</p>
+        <PerformanceMetric />
       </div>
 
       <div className="calculator-container-wrapper">
         <div className="calculator-container">
-          <h2>Beta Version 0.1</h2>
-          <p className="calculator-description">
-            Visualizing the relationship between Bitcoin price and model weights using our{' '}
-            <a
-              href="https://github.com/hypertrial/stacking_sats_pipeline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <strong>200-day Moving Average model</strong>
-            </a>
-            . The chart shows how the model adjusts weights based on market conditions.
-          </p>
-
           <div className="calculator-content">
-            <Disclaimer />
-
             <ChartSection data={chartData} isLoading={isLoading} error={error} />
           </div>
         </div>

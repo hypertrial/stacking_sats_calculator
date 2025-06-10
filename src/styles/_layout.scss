@@ -9,12 +9,25 @@
   margin: 0 auto;
   padding: $spacing-lg;
   
+  // Remove top padding when page has disclaimer
+  &.has-page-disclaimer {
+    padding-top: 0;
+  }
+  
   &.home-container-small {
     padding: $spacing-sm;
+    
+    &.has-page-disclaimer {
+      padding-top: 0;
+    }
   }
   
   &.home-container-tiny {
     padding: $spacing-xs;
+    
+    &.has-page-disclaimer {
+      padding-top: 0;
+    }
   }
 }
 
