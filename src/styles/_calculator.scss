@@ -2,6 +2,7 @@
 // CALCULATOR COMPONENTS
 // =============================================================================
 
+@use 'sass:color';
 @use 'variables' as *;
 @use 'mixins' as *;
 
@@ -73,4 +74,87 @@
   font-weight: 600;
   color: $secondary-color;
   margin-bottom: $spacing-sm;
+}
+
+// Chart-specific styles
+.chart-with-legend {
+  display: flex;
+  gap: $spacing-lg;
+  align-items: flex-start;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.chart-container {
+  background: $white;
+  border-radius: $border-radius-sm;
+  padding: $spacing-md;
+  @include card-shadow;
+  flex: 1;
+  
+  canvas {
+    max-height: 500px !important;
+  }
+}
+
+.chart-info {
+  background: #f8f9fa;
+  border-radius: $border-radius-sm;
+  padding: 12px;
+  min-width: 140px;
+  max-width: 160px;
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    li {
+      margin-bottom: 4px;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      
+      span {
+        font-weight: bold;
+        margin-right: 4px;
+      }
+    }
+  }
+  
+  .data-info {
+    margin-top: 6px;
+    font-size: 0.65rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.1;
+  }
+}
+
+.refresh-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: $spacing-md;
+}
+
+.refresh-button {
+  background: $primary-color;
+  color: $white;
+  border: none;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  
+  &:hover:not(:disabled) {
+    background: color.adjust($primary-color, $lightness: -10%);
+  }
+  
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
 } 
