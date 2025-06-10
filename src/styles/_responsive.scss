@@ -1,0 +1,31 @@
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
+
+@use 'variables' as *;
+
+@media (max-width: $mobile) {
+  .home-container {
+    padding: $spacing-sm;
+  }
+  
+  .resources-title h1 {
+    font-size: 2rem;
+  }
+  
+  .calculator-container {
+    padding: $spacing-md;
+  }
+  
+  .results-table {
+    font-size: 0.85rem;
+    
+    th, td {
+      padding: 0.6rem;
+    }
+  }
+  
+  .slides-container iframe {
+    height: 300px;
+  }
+} 

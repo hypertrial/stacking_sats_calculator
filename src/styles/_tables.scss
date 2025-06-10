@@ -1,0 +1,47 @@
+// =============================================================================
+// TABLE COMPONENTS
+// =============================================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.table-container {
+  overflow-x: auto;
+  border-radius: $border-radius-sm;
+  @include card-shadow;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: $white;
+  
+  th {
+    background: $secondary-color;
+    color: $white;
+    padding: $spacing-sm;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  
+  td {
+    padding: 0.8rem $spacing-sm;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 0.95rem;
+  }
+  
+  tr {
+    &.past-date {
+      background: $table-bg-past;
+    }
+    
+    &.future-date {
+      background: $table-bg-future;
+    }
+    
+    &:hover {
+      background: $table-hover;
+    }
+  }
+} 

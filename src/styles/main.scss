@@ -1,0 +1,22 @@
+// =============================================================================
+// MAIN STYLES - IMPORT ALL MODULES
+// =============================================================================
+
+// Import variables and mixins first (order matters)
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Import base styles
+@use 'base';
+
+// Import layout components
+@use 'layout';
+
+// Import feature-specific styles
+@use 'calculator';
+@use 'forms';
+@use 'tables';
+@use 'components';
+
+// Import responsive styles last
+@use 'responsive'; 

@@ -1,0 +1,44 @@
+// =============================================================================
+// UI COMPONENTS
+// =============================================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.error-message {
+  @include alert-box($error-bg, $error-border, $error-text);
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-lg;
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e3e3e3;
+    border-top: 4px solid $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.slides-container {
+  background: $white;
+  border-radius: $border-radius-md;
+  @include card-shadow;
+  overflow: hidden;
+  
+  iframe {
+    width: 100%;
+    height: 480px;
+    border: none;
+  }
+} 

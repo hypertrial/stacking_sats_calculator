@@ -1,0 +1,76 @@
+// =============================================================================
+// CALCULATOR COMPONENTS
+// =============================================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.calculator-container-wrapper {
+  background: $white;
+  border-radius: $border-radius-md;
+  @include card-shadow;
+  overflow: hidden;
+}
+
+.calculator-container {
+  padding: $spacing-lg;
+  
+  h2 {
+    color: $secondary-color;
+    margin-bottom: $spacing-sm;
+    font-size: 1.8rem;
+  }
+}
+
+.calculator-description {
+  margin-bottom: $spacing-lg;
+  color: #000000;
+  line-height: 1.7;
+  
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.calculator-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.calculator-disclaimer-section {
+  .disclaimer {
+    @include alert-box($warning-bg, $warning-border, $warning-text);
+    padding: $spacing-md;
+    
+    h3 {
+      margin-bottom: $spacing-sm;
+      font-size: 1.2rem;
+    }
+    
+    p {
+      margin-bottom: $spacing-sm;
+      font-size: 0.95rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.calculator-results-section {
+  margin-top: $spacing-lg;
+}
+
+.summary-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $secondary-color;
+  margin-bottom: $spacing-sm;
+} 

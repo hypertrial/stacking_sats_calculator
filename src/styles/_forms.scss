@@ -1,0 +1,93 @@
+// =============================================================================
+// FORM COMPONENTS
+// =============================================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.calculator-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  
+  label {
+    font-weight: 600;
+    color: #000000;
+    font-size: 1.1rem;
+  }
+}
+
+.formatted-input-wrapper {
+  position: relative;
+  
+  .formatted-input {
+    width: 100%;
+    padding: $spacing-sm 2.5rem $spacing-sm $spacing-sm;
+    border: 2px solid #ddd;
+    border-radius: $border-radius-sm;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+  }
+  
+  .dollar-sign {
+    position: absolute;
+    right: $spacing-sm;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-muted;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+}
+
+.input-error-message {
+  @include alert-box($error-bg, $error-border, $error-text);
+  display: flex;
+  gap: $spacing-sm;
+  align-items: flex-start;
+  
+  .warning-icon {
+    font-size: 1.2rem;
+  }
+  
+  strong {
+    display: block;
+    margin-bottom: $spacing-xs;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+button[type="submit"] {
+  background: $primary-color;
+  color: $white;
+  border: none;
+  padding: $spacing-sm $spacing-lg;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: $border-radius-sm;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  @include button-hover;
+  
+  &:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+  }
+} 
