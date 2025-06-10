@@ -10,7 +10,7 @@ export interface ChartDataPoint {
 // Load data from the CSV file
 export async function loadChartData(): Promise<ChartDataPoint[]> {
   try {
-    const response = await fetch('/strategytemplate_weights.csv');
+    const response = await fetch('./strategytemplate_weights.csv');
     if (!response.ok) {
       throw new Error(`Failed to fetch CSV data: ${response.status}`);
     }

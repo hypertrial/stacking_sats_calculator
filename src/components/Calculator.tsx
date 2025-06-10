@@ -134,7 +134,7 @@ const Calculator: React.FC = () => {
       <Disclaimer />
 
       <div className="resources-title">
-        <img src="/hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
+        <img src="./hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
         <h1>Stacking Sats - Beta Version 0.1</h1>
         <p>Optimizing Bitcoin Dollar Cost Averaging (DCA)</p>
         <PerformanceMetric />

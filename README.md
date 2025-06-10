@@ -1,17 +1,18 @@
 # Stacking Sats Calculator
 
-A React TypeScript web application for optimizing Bitcoin Dollar-Cost Averaging (DCA) strategy using a 200-day moving average model.
+**Showcasing Stacking Sats - An optimized Bitcoin DCA open source beta model by [Hypertrial.ai](https://www.hypertrial.ai)**
 
-**Stacking Sats - A [Hypertrial.ai](https://www.hypertrial.ai) Open-Source Initiative**
+A web application demonstrating our intelligent Bitcoin Dollar-Cost Averaging strategy that uses 200-day moving average analysis to optimize purchase timing and allocation.
 
-For the underlying backtesting framework and strategy development, see: [stacking_sats_pipeline](https://github.com/hypertrial/stacking_sats_pipeline)
+## About Stacking Sats
 
-## Features
+Stacking Sats is Hypertrial.ai's open source beta model that enhances traditional DCA by:
 
-- **Smart DCA Strategy**: Uses 200-day moving average to optimize Bitcoin purchase timing
-- **Weight Allocation**: Calculates optimal daily purchase amounts for current month
-- **Responsive Design**: Works across all devices
-- **TypeScript**: Fully typed development experience
+- **Smart Timing**: Analyzes Bitcoin price relative to 200-day moving average
+- **Dynamic Allocation**: Increases purchases when Bitcoin is undervalued
+- **Risk Management**: Maintains your monthly budget while optimizing entry points
+
+For the complete backtesting framework and strategy development: [stacking_sats_pipeline](https://github.com/hypertrial/stacking_sats_pipeline)
 
 ## Quick Start
 
@@ -20,22 +21,15 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` in your browser.
-
-## How It Works
-
-1. **Price Analysis**: Compares Bitcoin price to 200-day moving average
-2. **Z-Score Calculation**: Measures price deviation from average
-3. **Weight Adjustment**: Increases purchases when price is undervalued
-4. **Budget Maintenance**: Respects total monthly budget while optimizing timing
+Open `http://localhost:5173` to try the calculator.
 
 ## Usage
 
-1. Enter your monthly DCA amount (up to $999,999)
-2. Click "Calculate" to generate optimized daily purchase schedule
-3. Review results showing dates, weights, amounts, and simulated prices
+1. Enter your monthly DCA budget
+2. Get optimized daily purchase recommendations
+3. See how the model adjusts allocation based on market conditions
 
-## Build
+## Build for Production
 
 ```bash
 npm run build
@@ -43,8 +37,8 @@ npm run build
 
 ## Disclaimer
 
-Educational purposes only. Not financial advice. Cryptocurrency investments carry significant risk.
+This is a beta model for educational and demonstration purposes. Not financial advice. Cryptocurrency investments carry significant risk.
 
 ## License
 
-Licensed under the terms in the LICENSE file.
+Open source - see LICENSE file for details.
