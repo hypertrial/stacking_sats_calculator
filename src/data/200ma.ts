@@ -26,7 +26,6 @@ export async function loadChartData(): Promise<ChartDataPoint[]> {
 // Parse CSV data into chart format
 function parseCSVData(csvText: string): ChartDataPoint[] {
   const lines = csvText.trim().split('\n');
-  const headers = lines[0].split(',');
 
   // Skip header row
   return lines
