@@ -126,10 +126,10 @@ const ChartSection: React.FC<{
         <div className="chart-info-bottom">
           <ul>
             <li>
-              <span style={{ color: 'rgb(255, 102, 0)' }}>●</span> Higher DCA Allocation
+              <span style={{ color: 'rgb(255, 102, 0)' }}>●</span> Dynamic Allocation
             </li>
             <li>
-              <span style={{ color: 'rgb(0, 102, 204)' }}>●</span> Standard DCA Allocation
+              <span style={{ color: 'rgb(0, 102, 204)' }}>●</span> DCA Allocation
             </li>
           </ul>
         </div>
@@ -191,7 +191,7 @@ const Calculator: React.FC = () => {
           <img src="./hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
         </a>
         <h1>Stacking Sats - Beta Version 0.1</h1>
-        <p>Optimizing Bitcoin Dollar Cost Averaging (DCA)</p>
+        <p>Optimizing Bitcoin Accumulation</p>
         <PerformanceMetric />
       </div>
 
