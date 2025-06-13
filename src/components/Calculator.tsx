@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +11,12 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useResponsive } from '../hooks/useResponsive';
-import { loadChartData, prepareChartData, chartOptions, ChartDataPoint } from '../data/200ma';
+import {
+  loadChartData,
+  prepareChartData,
+  getResponsiveChartOptions,
+  ChartDataPoint,
+} from '../data/200ma';
 import '../styles/main.scss';
 
 // Register Chart.js components
@@ -46,6 +51,39 @@ const ChartSection: React.FC<{
   isLoading: boolean;
   error: string | null;
 }> = ({ data, isLoading, error }) => {
+  const { screenWidth } = useResponsive();
+  const chartRef = useRef<any>(null);
+  const [chartKey, setChartKey] = useState(0);
+
+  // Force chart refresh when screen size changes significantly
+  useEffect(() => {
+    if (chartRef.current) {
+      const chart = chartRef.current;
+
+      // Force chart to resize and redraw
+      setTimeout(() => {
+        chart.resize();
+        chart.update('none');
+      }, 150); // Small delay to ensure CSS transitions complete
+    }
+
+    // Update chart key for breakpoint changes to force re-render
+    const breakpoints = [480, 768, 968, 1200, 1400];
+    const currentBreakpoint = breakpoints.findIndex((bp) => screenWidth <= bp);
+    setChartKey((prev) => prev + 1);
+  }, [screenWidth]);
+
+  // Debounced resize effect for better performance
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (chartRef.current) {
+        chartRef.current.resize();
+      }
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+  }, [screenWidth]);
+
   if (isLoading) {
     return (
       <div className="loading-indicator">
@@ -74,12 +112,18 @@ const ChartSection: React.FC<{
   }
 
   const chartData = prepareChartData(data);
+  const responsiveOptions = getResponsiveChartOptions(screenWidth);
 
   return (
     <div className="calculator-results-section">
       <div className="chart-with-legend-vertical">
         <div className="chart-container-full">
-          <Line data={chartData} options={chartOptions} />
+          <Line
+            ref={chartRef}
+            key={`chart-${chartKey}`}
+            data={chartData}
+            options={responsiveOptions}
+          />
         </div>
         <div className="chart-info-bottom">
           <ul>
@@ -98,16 +142,23 @@ const ChartSection: React.FC<{
 
 // Main Calculator component
 const Calculator: React.FC = () => {
-  const { isSmallMobile, isTinyMobile } = useResponsive();
+  const { isTinyMobile, isSmallMobile, isMobile, isTablet, isDesktopSmall, screenWidth } =
+    useResponsive();
   const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const containerClass = isTinyMobile
-    ? 'home-container home-container-tiny has-page-disclaimer'
-    : isSmallMobile
-    ? 'home-container home-container-small has-page-disclaimer'
-    : 'home-container has-page-disclaimer';
+  // Dynamic container class based on screen size
+  const getContainerClass = () => {
+    if (isTinyMobile) return 'home-container home-container-tiny has-page-disclaimer';
+    if (isSmallMobile) return 'home-container home-container-small has-page-disclaimer';
+    if (isMobile) return 'home-container home-container-mobile has-page-disclaimer';
+    if (isTablet) return 'home-container home-container-tablet has-page-disclaimer';
+    if (isDesktopSmall) return 'home-container home-container-desktop-small has-page-disclaimer';
+    return 'home-container has-page-disclaimer';
+  };
+
+  const containerClass = getContainerClass();
 
   // Load chart data on component mount
   useEffect(() => {
@@ -134,7 +185,14 @@ const Calculator: React.FC = () => {
       <Disclaimer />
 
       <div className="resources-title">
-        <img src="./hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
+        <a
+          href="https://hypertrial.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hypertrial-logo-link"
+        >
+          <img src="./hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
+        </a>
         <h1>Stacking Sats - Beta Version 0.1</h1>
         <p>Optimizing Bitcoin Dollar Cost Averaging (DCA)</p>
         <PerformanceMetric />

@@ -113,6 +113,7 @@ export function prepareChartData(data: ChartDataPoint[]) {
 // Chart.js options for Bitcoin price time series
 export const chartOptions = {
   responsive: true,
+  maintainAspectRatio: false,
   interaction: {
     mode: 'index' as const,
     intersect: false,
@@ -152,4 +153,80 @@ export const chartOptions = {
       },
     },
   },
+  // Enhanced responsive behavior
+  onResize: function (chart: any, size: any) {
+    // Force chart to redraw on resize
+    chart.update('none');
+  },
 };
+
+// Generate responsive chart options based on screen size
+export function getResponsiveChartOptions(screenWidth: number) {
+  const isTinyMobile = screenWidth <= 480;
+  const isMobile = screenWidth <= 768;
+  const isTablet = screenWidth <= 968;
+
+  return {
+    ...chartOptions,
+    plugins: {
+      ...chartOptions.plugins,
+      title: {
+        display: true,
+        text: 'BTC-USD (2020-2024)',
+        font: {
+          size: isTinyMobile ? 12 : isMobile ? 14 : 16,
+        },
+      },
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: 'Date',
+          font: {
+            size: isTinyMobile ? 10 : isMobile ? 12 : 14,
+          },
+        },
+        ticks: {
+          maxTicksLimit: isTinyMobile ? 8 : isMobile ? 12 : isTablet ? 16 : 20,
+          font: {
+            size: isTinyMobile ? 9 : isMobile ? 10 : 12,
+          },
+        },
+      },
+      'y-price': {
+        type: 'linear' as const,
+        display: true,
+        position: 'left' as const,
+        title: {
+          display: true,
+          text: 'BTC-USD',
+          font: {
+            size: isTinyMobile ? 10 : isMobile ? 12 : 14,
+          },
+        },
+        ticks: {
+          callback: function (value: any) {
+            const formattedValue = '$' + value.toLocaleString();
+            // Shorter format for mobile
+            if (isTinyMobile && value >= 1000) {
+              return '$' + (value / 1000).toFixed(0) + 'k';
+            }
+            return formattedValue;
+          },
+          font: {
+            size: isTinyMobile ? 9 : isMobile ? 10 : 12,
+          },
+        },
+      },
+    },
+    // Enhanced responsive behavior
+    onResize: function (chart: any, size: any) {
+      // Force chart to redraw on resize
+      setTimeout(() => {
+        chart.update('none');
+      }, 100);
+    },
+  };
+}
