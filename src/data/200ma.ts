@@ -82,8 +82,8 @@ export function prepareChartData(data: ChartDataPoint[]) {
             const index = context.dataIndex;
             if (index < data.length) {
               return data[index].modelWeight > percentile75Weight
-                ? 'rgb(0, 102, 204)' // Blue for higher allocation (color-blind friendly)
-                : 'rgb(255, 102, 0)'; // Orange for standard allocation (color-blind friendly)
+                ? 'rgb(255, 102, 0)' // Orange for higher allocation (color-blind friendly)
+                : 'rgb(0, 102, 204)'; // Blue for standard allocation (color-blind friendly)
             }
           }
           return 'rgba(128, 128, 128, 1)'; // Default gray
@@ -94,8 +94,8 @@ export function prepareChartData(data: ChartDataPoint[]) {
             const startIndex = ctx.p0DataIndex;
             if (startIndex < data.length) {
               return data[startIndex].modelWeight > percentile75Weight
-                ? 'rgb(0, 102, 204)' // Blue for higher allocation (color-blind friendly)
-                : 'rgb(255, 102, 0)'; // Orange for standard allocation (color-blind friendly)
+                ? 'rgb(255, 102, 0)' // Orange for higher allocation (color-blind friendly)
+                : 'rgb(0, 102, 204)'; // Blue for standard allocation (color-blind friendly)
             }
             return 'rgba(128, 128, 128, 1)';
           },
