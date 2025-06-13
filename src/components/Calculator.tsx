@@ -128,10 +128,10 @@ const ChartSection: React.FC<{
         <div className="chart-info-bottom">
           <ul>
             <li>
-              <span style={{ color: 'green' }}>●</span> Higher DCA Allocation
+              <span style={{ color: 'rgb(0, 102, 204)' }}>●</span> Higher DCA Allocation
             </li>
             <li>
-              <span style={{ color: 'red' }}>●</span> Standard DCA Allocation
+              <span style={{ color: 'rgb(255, 102, 0)' }}>●</span> Standard DCA Allocation
             </li>
           </ul>
         </div>
