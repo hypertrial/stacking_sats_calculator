@@ -18,10 +18,17 @@ For the complete backtesting framework and strategy development: [stacking_sats_
 
 ```bash
 npm install
-npm run dev
+npm run dev:strict  # Recommended: Development with strict TypeScript checking
 ```
 
-Open `http://localhost:5173` to try the calculator.
+Open `http://localhost:3000` to try the calculator.
+
+### Development Options
+
+- `npm run dev:strict` - **Recommended**: Runs dev server with real-time TypeScript error checking
+- `npm run dev` - Standard development mode
+- `npm run type-check` - Manual TypeScript type checking
+- `npm run type-check:watch` - Continuous TypeScript checking
 
 ## Usage
 
@@ -32,7 +39,8 @@ Open `http://localhost:5173` to try the calculator.
 ## Build for Production
 
 ```bash
-npm run build
+npm run build  # Runs TypeScript compilation + Vite build
+npm run lint   # Check code quality and unused variables
 ```
 
 ## Disclaimer

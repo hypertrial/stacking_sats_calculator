@@ -154,7 +154,7 @@ export const chartOptions = {
     },
   },
   // Enhanced responsive behavior
-  onResize: function (chart: any, size: any) {
+  onResize: function (chart: any, _size: any) {
     // Force chart to redraw on resize
     chart.update('none');
   },
@@ -222,7 +222,7 @@ export function getResponsiveChartOptions(screenWidth: number) {
       },
     },
     // Enhanced responsive behavior
-    onResize: function (chart: any, size: any) {
+    onResize: function (chart: any, _size: any) {
       // Force chart to redraw on resize
       setTimeout(() => {
         chart.update('none');

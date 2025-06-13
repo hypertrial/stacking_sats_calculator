@@ -11,5 +11,8 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-unused-params': 'error',
+    'no-unused-vars': 'off', // Turn off base rule as it conflicts with @typescript-eslint rule
   },
 };

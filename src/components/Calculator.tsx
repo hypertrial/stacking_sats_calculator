@@ -68,8 +68,6 @@ const ChartSection: React.FC<{
     }
 
     // Update chart key for breakpoint changes to force re-render
-    const breakpoints = [480, 768, 968, 1200, 1400];
-    const currentBreakpoint = breakpoints.findIndex((bp) => screenWidth <= bp);
     setChartKey((prev) => prev + 1);
   }, [screenWidth]);
 
@@ -142,8 +140,7 @@ const ChartSection: React.FC<{
 
 // Main Calculator component
 const Calculator: React.FC = () => {
-  const { isTinyMobile, isSmallMobile, isMobile, isTablet, isDesktopSmall, screenWidth } =
-    useResponsive();
+  const { isTinyMobile, isSmallMobile, isMobile, isTablet, isDesktopSmall } = useResponsive();
   const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
