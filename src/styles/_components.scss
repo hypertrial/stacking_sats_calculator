@@ -41,4 +41,54 @@
     height: 480px;
     border: none;
   }
+}
+
+.action-buttons {
+  display: flex;
+  gap: $spacing-md;
+  justify-content: center;
+  margin-top: $spacing-lg;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.action-button {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  
+  &.contribute-button {
+    background-color: transparent;
+    color: $primary-color;
+    border-color: $primary-color;
+    
+    &:hover {
+      background-color: $primary-color;
+      color: $white;
+      transform: translateY(-2px);
+    }
+  }
+  
+  &.contact-button {
+    background-color: $primary-color;
+    color: $white;
+    
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: $spacing-md;
+    width: 100%;
+  }
 } 

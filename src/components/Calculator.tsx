@@ -40,7 +40,7 @@ const PerformanceMetric: React.FC = () => (
     <div className="performance-box-small">
       <div className="metric-value-compact">
         <span className="percentage-small">+20.58%</span>
-        <p className="metric-description-small">Increased Bitcoin bought vs standard DCA</p>
+        <p className="metric-description-small">More BTC accumulated vs standard DCA (2020–2024)</p>
       </div>
     </div>
   </div>
@@ -190,9 +190,23 @@ const Calculator: React.FC = () => {
         >
           <img src="./hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
         </a>
-        <h1>Stacking Sats - Beta Version 0.1</h1>
-        <p>Optimizing Bitcoin Accumulation</p>
+        <h1>Stacking Sats</h1>
+        <p>Optimizing Bitcoin Accumulation for Institutional Investors</p>
         <PerformanceMetric />
+
+        <div className="action-buttons">
+          <a
+            href="https://github.com/hypertrial/stacking_sats_pipeline"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="action-button contribute-button"
+          >
+            For Talent: Contribute
+          </a>
+          <a href="mailto:mohammad@trilemmacapital.com" className="action-button contact-button">
+            For Investors: Contact
+          </a>
+        </div>
       </div>
 
       <div className="calculator-container-wrapper">
