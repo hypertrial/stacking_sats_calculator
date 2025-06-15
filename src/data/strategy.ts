@@ -10,7 +10,7 @@ export interface ChartDataPoint {
 // Load data from the CSV file
 export async function loadChartData(): Promise<ChartDataPoint[]> {
   try {
-    const response = await fetch('./strategytemplate_weights.csv');
+    const response = await fetch('./v3.csv');
     if (!response.ok) {
       throw new Error(`Failed to fetch CSV data: ${response.status}`);
     }
@@ -48,8 +48,9 @@ function parseCSVData(csvText: string): ChartDataPoint[] {
 // Get color for weight based on value (red for low, green for high)
 export function getWeightColor(weight: number, alpha: number = 1): string {
   // Normalize weight to 0-1 range for color interpolation
-  // Assuming weights typically range from 0.001 to 0.02 based on CSV data
-  const minWeight = 0.001;
+  // Updated range based on v3_capmvrvff_strategy_weights.csv data
+  // Weights range from about 0.00001 to 0.02
+  const minWeight = 0.00001;
   const maxWeight = 0.02;
   const normalizedWeight = Math.max(0, Math.min(1, (weight - minWeight) / (maxWeight - minWeight)));
 
@@ -63,12 +64,15 @@ export function getWeightColor(weight: number, alpha: number = 1): string {
 
 // Prepare data for Chart.js
 export function prepareChartData(data: ChartDataPoint[]) {
+  // Set the percentile threshold for color coding (change this value to adjust the threshold)
+  const PERCENTILE_THRESHOLD = 0.55; // percentile
+
   const labels = data.map((item) => item.date);
 
-  // Calculate 75th percentile weight
+  // Calculate percentile weight for color threshold
   const weights = data.map((item) => item.modelWeight).sort((a, b) => a - b);
-  const percentile75Index = Math.floor(weights.length * 0.75);
-  const percentile75Weight = weights[percentile75Index];
+  const percentileIndex = Math.floor(weights.length * PERCENTILE_THRESHOLD);
+  const percentileWeight = weights[percentileIndex];
 
   return {
     labels,
@@ -81,7 +85,7 @@ export function prepareChartData(data: ChartDataPoint[]) {
           if (context.type === 'data') {
             const index = context.dataIndex;
             if (index < data.length) {
-              return data[index].modelWeight > percentile75Weight
+              return data[index].modelWeight > percentileWeight
                 ? 'rgb(255, 102, 0)' // Orange for higher allocation (color-blind friendly)
                 : 'rgb(0, 102, 204)'; // Blue for standard allocation (color-blind friendly)
             }
@@ -93,7 +97,7 @@ export function prepareChartData(data: ChartDataPoint[]) {
             // Color each line segment based on the starting point's weight
             const startIndex = ctx.p0DataIndex;
             if (startIndex < data.length) {
-              return data[startIndex].modelWeight > percentile75Weight
+              return data[startIndex].modelWeight > percentileWeight
                 ? 'rgb(255, 102, 0)' // Orange for higher allocation (color-blind friendly)
                 : 'rgb(0, 102, 204)'; // Blue for standard allocation (color-blind friendly)
             }

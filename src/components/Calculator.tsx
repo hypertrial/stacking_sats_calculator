@@ -16,7 +16,7 @@ import {
   prepareChartData,
   getResponsiveChartOptions,
   ChartDataPoint,
-} from '../data/200ma';
+} from '../data/strategy';
 import '../styles/main.scss';
 
 // Register Chart.js components
@@ -39,7 +39,7 @@ const PerformanceMetric: React.FC = () => (
   <div className="performance-metric-compact">
     <div className="performance-box-small">
       <div className="metric-value-compact">
-        <span className="percentage-small">+20.58%</span>
+        <span className="percentage-small">52.57%</span>
         <p className="metric-description-small">More BTC accumulated vs standard DCA (2020–2024)</p>
       </div>
     </div>
