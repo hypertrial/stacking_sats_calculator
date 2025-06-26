@@ -41,13 +41,7 @@
     }
   }
   
-  .chart-container-full {
-    padding: $spacing-sm;
-    
-    canvas {
-      max-height: 250px !important;
-    }
-  }
+
 }
 
 @media (min-width: #{$tiny-mobile + 1px}) and (max-width: $mobile) {
@@ -85,11 +79,7 @@
     }
   }
   
-  .chart-container-full {
-    canvas {
-      max-height: 350px !important;
-    }
-  }
+
   
   .results-table {
     font-size: 0.85rem;
@@ -131,11 +121,7 @@
     }
   }
   
-  .chart-container-full {
-    canvas {
-      max-height: 400px !important;
-    }
-  }
+
 }
 
 @media (min-width: #{$tablet + 1px}) and (max-width: $desktop-small) {
@@ -165,11 +151,7 @@
     }
   }
   
-  .chart-container-full {
-    canvas {
-      max-height: 450px !important;
-    }
-  }
+
 }
 
 @media (min-width: #{$desktop-small + 1px}) and (max-width: $desktop-medium) {
