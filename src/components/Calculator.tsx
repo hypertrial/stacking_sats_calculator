@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useResponsive } from '../hooks/useResponsive';
+import ProblemStatement from './ProblemStatement';
 import '../styles/main.scss';
 
 // Sub-components
@@ -112,6 +113,9 @@ const Calculator: React.FC = () => {
           </a>
         </div>
       </div>
+
+      {/* Problem Statement */}
+      <ProblemStatement />
 
       {/* Footer with Hypertrial logo - same style as header */}
       <footer className="footer-section">

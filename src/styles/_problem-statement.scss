@@ -1,0 +1,424 @@
+// =============================================================================
+// PROBLEM STATEMENT COMPONENT
+// =============================================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.problem-statement {
+  max-width: 1000px;
+  margin: $spacing-xl auto;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: $tablet) {
+    margin: $spacing-lg auto;
+  }
+
+  @media (max-width: $mobile) {
+    margin: $spacing-md auto;
+  }
+}
+
+.problem-content {
+  background: $white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-xl;
+  @include card-shadow;
+  color: $text-color;
+  line-height: 1.7;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: $tablet) {
+    padding: $spacing-lg;
+    border-radius: $border-radius-md;
+  }
+
+  @media (max-width: $mobile) {
+    padding: $spacing-md;
+    border-radius: $border-radius-sm;
+  }
+
+  @media (max-width: $tiny-mobile) {
+    padding: $spacing-sm;
+  }
+
+  // Headers
+  h1 {
+    color: $secondary-color;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: $spacing-lg;
+    line-height: 1.3;
+    text-align: center;
+    transition: font-size 0.3s ease-in-out;
+
+    @media (max-width: $tablet) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: $mobile) {
+      font-size: 1.8rem;
+      margin-bottom: $spacing-md;
+    }
+
+    @media (max-width: $tiny-mobile) {
+      font-size: 1.6rem;
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $primary-dark;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  h2 {
+    color: $secondary-color;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: $spacing-xl 0 $spacing-lg 0;
+    line-height: 1.4;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: $spacing-sm;
+    transition: font-size 0.3s ease-in-out;
+
+    @media (max-width: $tablet) {
+      font-size: 1.6rem;
+    }
+
+    @media (max-width: $mobile) {
+      font-size: 1.5rem;
+      margin: $spacing-lg 0 $spacing-md 0;
+    }
+
+    @media (max-width: $tiny-mobile) {
+      font-size: 1.4rem;
+    }
+  }
+
+  h3 {
+    color: $secondary-color;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: $spacing-lg 0 $spacing-md 0;
+    line-height: 1.4;
+    transition: font-size 0.3s ease-in-out;
+
+    @media (max-width: $mobile) {
+      font-size: 1.3rem;
+      margin: $spacing-md 0 $spacing-sm 0;
+    }
+
+    @media (max-width: $tiny-mobile) {
+      font-size: 1.2rem;
+    }
+  }
+
+  h4 {
+    color: $secondary-color;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: $spacing-md 0 $spacing-sm 0;
+    line-height: 1.4;
+    transition: font-size 0.3s ease-in-out;
+
+    @media (max-width: $mobile) {
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: $tiny-mobile) {
+      font-size: 1rem;
+    }
+  }
+
+  // Paragraphs
+  p {
+    margin-bottom: $spacing-md;
+    color: $text-color;
+    font-size: 1rem;
+    transition: font-size 0.3s ease-in-out;
+
+    @media (max-width: $mobile) {
+      font-size: 0.95rem;
+      margin-bottom: $spacing-sm;
+    }
+
+    @media (max-width: $tiny-mobile) {
+      font-size: 0.9rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $primary-dark;
+        text-decoration: underline;
+      }
+    }
+
+    strong {
+      color: $secondary-color;
+      font-weight: 600;
+    }
+
+    em {
+      font-style: italic;
+      color: $text-light;
+    }
+  }
+
+  // Lists
+  ul, ol {
+    margin: $spacing-md 0;
+    padding-left: $spacing-lg;
+    
+    @media (max-width: $mobile) {
+      margin: $spacing-sm 0;
+      padding-left: $spacing-md;
+    }
+
+    li {
+      margin-bottom: $spacing-sm;
+      color: $text-color;
+      line-height: 1.6;
+
+      @media (max-width: $mobile) {
+        margin-bottom: $spacing-xs;
+      }
+
+      strong {
+        color: $secondary-color;
+        font-weight: 600;
+      }
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          color: $primary-dark;
+          text-decoration: underline;
+        }
+      }
+
+      // Nested lists
+      ul, ol {
+        margin: $spacing-xs 0;
+        padding-left: $spacing-md;
+      }
+    }
+  }
+
+  // Blockquotes
+  blockquote {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid $primary-color;
+    margin: $spacing-lg 0;
+    padding: $spacing-md $spacing-lg;
+    border-radius: $border-radius-sm;
+    position: relative;
+    font-style: italic;
+    @include card-shadow;
+
+    @media (max-width: $mobile) {
+      margin: $spacing-md 0;
+      padding: $spacing-sm $spacing-md;
+    }
+
+    p {
+      margin-bottom: $spacing-sm;
+      color: $text-light;
+      font-size: 1.05rem;
+
+      @media (max-width: $mobile) {
+        font-size: 1rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &::before {
+      content: '"';
+      font-size: 3rem;
+      color: $primary-color;
+      position: absolute;
+      top: -10px;
+      left: $spacing-sm;
+      font-family: serif;
+      opacity: 0.3;
+    }
+  }
+
+  // Math blocks
+  .math-block {
+    background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
+    border: 1px solid #d1d5da;
+    border-radius: $border-radius-sm;
+    padding: $spacing-md;
+    margin: $spacing-md 0;
+    overflow-x: auto;
+    @include card-shadow;
+    text-align: center;
+
+    @media (max-width: $mobile) {
+      padding: $spacing-sm;
+      margin: $spacing-sm 0;
+    }
+
+    // KaTeX block math styling
+    .katex-display {
+      margin: 0 !important;
+      text-align: center;
+      
+      .katex {
+        font-size: 1.1rem !important;
+        
+        @media (max-width: $mobile) {
+          font-size: 1rem !important;
+        }
+        
+        @media (max-width: $tiny-mobile) {
+          font-size: 0.9rem !important;
+        }
+      }
+    }
+
+    // Legacy support for any remaining <p> tags
+    p {
+      margin: $spacing-xs 0;
+      font-size: 1.1rem;
+      color: $secondary-color;
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.5;
+
+      @media (max-width: $mobile) {
+        font-size: 1rem;
+      }
+
+      @media (max-width: $tiny-mobile) {
+        font-size: 0.9rem;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Inline math styling
+  .katex {
+    font-size: 1em !important;
+    color: $secondary-color;
+  }
+
+  // Horizontal rules
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $primary-color, transparent);
+    margin: $spacing-xl 0;
+    border-radius: 1px;
+
+    @media (max-width: $mobile) {
+      margin: $spacing-lg 0;
+    }
+
+    @media (max-width: $tiny-mobile) {
+      margin: $spacing-md 0;
+    }
+  }
+
+  // Images
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: $border-radius-sm;
+    @include card-shadow;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  // Links in paragraphs get special YouTube badge styling
+  a[href*="youtube"] img,
+  a[href*="youtu.be"] img {
+    display: inline-block;
+    vertical-align: middle;
+    margin: $spacing-xs 0;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  // Special styling for the first paragraph after h3
+  h3 + p {
+    font-size: 1.05rem;
+    color: $text-light;
+    font-weight: 500;
+
+    @media (max-width: $mobile) {
+      font-size: 1rem;
+    }
+  }
+
+  // Enhanced typography for better readability
+  & > *:first-child {
+    margin-top: 0;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  // Smooth scroll behavior for internal links
+  html {
+    scroll-behavior: smooth;
+  }
+
+  // Print styles
+  @media print {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    
+    .math-block {
+      background: #f5f5f5 !important;
+      border: 1px solid #ccc !important;
+    }
+    
+    blockquote {
+      background: #f9f9f9 !important;
+      border-left: 4px solid #333 !important;
+    }
+    
+    a {
+      color: #0066cc !important;
+      text-decoration: underline !important;
+    }
+  }
+} 
