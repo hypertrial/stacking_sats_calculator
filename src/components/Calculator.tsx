@@ -25,7 +25,7 @@ const Disclaimer: React.FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
         <h3>Disclaimer</h3>
         <p>
           {isHovered
-            ? 'I understand and accept these terms'
+            ? 'Click to agree to terms and remove disclaimer banner.'
             : 'Stacking Sats is provided for informational and educational purposes only. It does not constitute financial advice. Do your own research.'}
         </p>
       </div>

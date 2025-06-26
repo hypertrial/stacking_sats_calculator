@@ -181,11 +181,7 @@
     }
   }
   
-  .chart-container-full {
-    canvas {
-      max-height: 500px !important;
-    }
-  }
+
 }
 
 @media (min-width: #{$desktop-medium + 1px}) {
@@ -216,11 +212,7 @@
     }
   }
   
-  .chart-container-full {
-    canvas {
-      max-height: 550px !important;
-    }
-  }
+
 }
 
 // Smooth transitions for all responsive elements
@@ -228,14 +220,6 @@
 .resources-title h1,
 .resources-title p,
 .hypertrial-logo,
-.performance-metric-compact .performance-box-small,
-.chart-container-full canvas {
+.performance-metric-compact .performance-box-small {
   transition: all 0.3s ease-in-out;
-}
-
-// Ensure smooth chart resizing
-.chart-container-full {
-  canvas {
-    transition: max-height 0.3s ease-in-out !important;
-  }
 } 
