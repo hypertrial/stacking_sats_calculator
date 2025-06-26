@@ -7,25 +7,15 @@
 @use 'mixins' as *;
 
 .calculator-container-wrapper {
-  background: $white;
-  border: 2px solid $primary-color; // Match performance box border style
-  border-radius: $border-radius-md;
-  @include card-shadow;
+  background: transparent;
+  border: none;
+  padding: 0;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  
-  // Responsive border radius adjustments
-  @media (max-width: $mobile) {
-    border-radius: $border-radius-sm;
-  }
-  
-  @media (max-width: $tiny-mobile) {
-    border-width: 1px;
-  }
 }
 
 .calculator-container {
-  padding: $spacing-lg;
+  padding: $spacing-sm;
   transition: padding 0.3s ease-in-out;
   
   // Responsive padding handled in _responsive.scss for specific breakpoints
@@ -111,27 +101,41 @@
 // Page-wide disclaimer banner
 .page-disclaimer {
   width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: $warning-bg;
-  border-bottom: 2px solid $warning-border;
-  margin-bottom: $spacing-xl;
-  margin-top: 0;
+  border-top: 2px solid $warning-border;
+  z-index: 1000;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   
   .disclaimer-banner {
     max-width: 1200px;
     margin: 0 auto;
     padding: calc($spacing-sm * 0.8) $spacing-lg;
     text-align: center;
+    transition: all 0.3s ease-in-out;
+    
+    &.clickable {
+      cursor: pointer;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+      
+      &:active {
+        transform: translateY(0);
+      }
+    }
     
     h3 {
       color: $warning-text;
       margin-bottom: calc($spacing-xs * 0.8);
       font-size: 0.9rem;
       font-weight: 600;
+      transition: color 0.3s ease-in-out;
     }
     
     p {
@@ -139,6 +143,8 @@
       margin: 0;
       font-size: 0.75rem;
       line-height: 1.3;
+      transition: all 0.3s ease-in-out;
+      min-height: 1.3em; // Prevent height jumping during text change
     }
   }
 }
@@ -163,10 +169,10 @@
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border: 2px solid $primary-color;
     border-radius: $border-radius-md;
-    padding: $spacing-md $spacing-lg;
+    padding: $spacing-sm $spacing-xl;
     text-align: center;
     width: auto;
-    min-width: 400px;
+    min-width: 450px;
     @include card-shadow;
     position: relative;
     overflow: hidden;
@@ -174,11 +180,11 @@
     
     // Enhanced responsive behavior
     @media (max-width: $mobile) {
-      padding: $spacing-sm $spacing-md;
+      padding: $spacing-xs $spacing-lg;
     }
     
     @media (max-width: $tiny-mobile) {
-      padding: $spacing-xs $spacing-sm;
+      padding: $spacing-xs $spacing-md;
       border-radius: $border-radius-sm;
     }
     

@@ -10,9 +10,9 @@
   padding: $spacing-lg;
   transition: padding 0.3s ease-in-out;
   
-  // Remove top padding when page has disclaimer
+  // Add bottom padding when page has disclaimer
   &.has-page-disclaimer {
-    padding-top: 0;
+    padding-bottom: 80px; // Space for fixed disclaimer
   }
   
   // Enhanced responsive container classes
@@ -21,7 +21,7 @@
     max-width: 100%;
     
     &.has-page-disclaimer {
-      padding-top: 0;
+      padding-bottom: 80px;
     }
   }
   
@@ -30,7 +30,7 @@
     max-width: 100%;
     
     &.has-page-disclaimer {
-      padding-top: 0;
+      padding-bottom: 80px;
     }
   }
   
@@ -39,7 +39,7 @@
     max-width: 100%;
     
     &.has-page-disclaimer {
-      padding-top: 0;
+      padding-bottom: 80px;
     }
   }
   
@@ -48,7 +48,7 @@
     max-width: 1000px;
     
     &.has-page-disclaimer {
-      padding-top: 0;
+      padding-bottom: 80px;
     }
   }
   
@@ -57,7 +57,7 @@
     max-width: 1200px;
     
     &.has-page-disclaimer {
-      padding-top: 0;
+      padding-bottom: 80px;
     }
   }
 }
@@ -90,7 +90,7 @@
   }
   
   .hypertrial-logo {
-    height: 60px;
+    height: 30px;
     display: block;
     transition: height 0.3s ease-in-out;
   }
@@ -106,6 +106,62 @@
     font-size: 1.2rem;
     color: $white;
     transition: font-size 0.3s ease-in-out;
+  }
+  
+  // Video section styling - matches performance box width
+  .video-section {
+    margin: $spacing-lg 0;
+    transition: margin 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    
+    video {
+      // Match performance box widths exactly
+      width: 450px;
+      max-width: 450px;
+      height: auto;
+      transition: all 0.3s ease-in-out;
+      
+      // Tablet range - matches performance box
+      @media (min-width: #{$tablet + 1px}) and (max-width: $desktop-small) {
+        width: 500px;
+        max-width: 500px;
+      }
+      
+      // Desktop small range - matches performance box  
+      @media (min-width: #{$desktop-small + 1px}) and (max-width: $desktop-medium) {
+        width: 550px;
+        max-width: 550px;
+      }
+      
+      // Desktop medium and up - matches performance box
+      @media (min-width: #{$desktop-medium + 1px}) {
+        width: 600px;
+        max-width: 600px;
+      }
+      
+      // Mobile range - matches performance box
+      @media (min-width: #{$tiny-mobile + 1px}) and (max-width: $mobile) {
+        width: 400px;
+        max-width: 400px;
+      }
+      
+      // Tiny mobile - matches performance box
+      @media (max-width: $tiny-mobile) {
+        width: 320px;
+        max-width: 320px;
+        border-width: 1px;
+        border-radius: 6px;
+      }
+    }
+    
+    @media (max-width: $mobile) {
+      margin: $spacing-md 0;
+    }
+    
+    @media (max-width: $tiny-mobile) {
+      margin: $spacing-sm 0;
+    }
   }
 }
 
@@ -146,5 +202,43 @@
       min-width: 350px;
       max-width: 500px;
     }
+  }
+}
+
+// Footer section styling
+.footer-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: $spacing-xl;
+  padding: $spacing-lg 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  
+  @media (max-width: $mobile) {
+    margin-top: $spacing-lg;
+    padding: $spacing-md 0;
+  }
+  
+  @media (max-width: $tiny-mobile) {
+    margin-top: $spacing-md;
+    padding: $spacing-sm 0;
+  }
+  
+  // Reuse the same logo link styles as header
+  .hypertrial-logo-link {
+    display: block;
+    width: fit-content;
+    transition: transform 0.3s ease-in-out;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  
+  // Logo inherits the same responsive sizing from the main styles
+  .hypertrial-logo {
+    height: 30px;
+    display: block;
+    transition: height 0.3s ease-in-out;
   }
 } 

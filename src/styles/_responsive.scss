@@ -24,7 +24,7 @@
     }
     
     .hypertrial-logo {
-      height: 40px;
+      height: 20px;
     }
   }
   
@@ -33,8 +33,8 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 280px;
-    padding: $spacing-sm;
+    min-width: 320px;
+    padding: $spacing-xs $spacing-md;
     
     .metric-value-compact .percentage-small {
       font-size: 1.4rem;
@@ -69,7 +69,7 @@
     }
     
     .hypertrial-logo {
-      height: 50px;
+      height: 25px;
     }
   }
   
@@ -78,7 +78,7 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 350px;
+    min-width: 400px;
     
     .metric-value-compact .percentage-small {
       font-size: 1.6rem;
@@ -119,12 +119,12 @@
     }
     
     .hypertrial-logo {
-      height: 55px;
+      height: 27px;
     }
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 400px;
+    min-width: 450px;
     
     .metric-value-compact .percentage-small {
       font-size: 1.7rem;
@@ -153,12 +153,12 @@
     }
     
     .hypertrial-logo {
-      height: 58px;
+      height: 29px;
     }
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 450px;
+    min-width: 500px;
     
     .metric-value-compact .percentage-small {
       font-size: 1.75rem;
@@ -187,12 +187,12 @@
     }
     
     .hypertrial-logo {
-      height: 60px;
+      height: 30px;
     }
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 500px;
+    min-width: 550px;
     
     .metric-value-compact .percentage-small {
       font-size: 1.8rem;
@@ -221,13 +221,13 @@
     }
     
     .hypertrial-logo {
-      height: 65px;
+      height: 32px;
     }
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 550px;
-    padding: $spacing-lg;
+    min-width: 600px;
+    padding: $spacing-sm $spacing-xl;
     
     .metric-value-compact .percentage-small {
       font-size: 1.9rem;

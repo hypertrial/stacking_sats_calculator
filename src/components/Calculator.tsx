@@ -23,17 +23,35 @@ import '../styles/main.scss';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 // Sub-components
-const Disclaimer: React.FC = () => (
-  <div className="page-disclaimer">
-    <div className="disclaimer-banner">
-      <h3>Disclaimer</h3>
-      <p>
-        Stacking Sats is provided for informational and educational purposes only. It does not
-        constitute financial advice. Do your own research.
-      </p>
+const Disclaimer: React.FC<{ onDismiss: () => void }> = ({ onDismiss }) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+
+  if (!isVisible) return null;
+
+  const handleClick = () => {
+    setIsVisible(false);
+    onDismiss();
+  };
+
+  return (
+    <div className="page-disclaimer">
+      <div
+        className="disclaimer-banner clickable"
+        onClick={handleClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <h3>Disclaimer</h3>
+        <p>
+          {isHovered
+            ? 'I understand and accept these terms'
+            : 'Stacking Sats is provided for informational and educational purposes only. It does not constitute financial advice. Do your own research.'}
+        </p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PerformanceMetric: React.FC = () => (
   <div className="performance-metric-compact">
@@ -113,27 +131,8 @@ const ChartSection: React.FC<{
   const responsiveOptions = getResponsiveChartOptions(screenWidth);
 
   return (
-    <div className="calculator-results-section">
-      <div className="chart-with-legend-vertical">
-        <div className="chart-container-full">
-          <Line
-            ref={chartRef}
-            key={`chart-${chartKey}`}
-            data={chartData}
-            options={responsiveOptions}
-          />
-        </div>
-        <div className="chart-info-bottom">
-          <ul>
-            <li>
-              <span style={{ color: 'rgb(255, 102, 0)' }}>●</span> Dynamic Allocation
-            </li>
-            <li>
-              <span style={{ color: 'rgb(0, 102, 204)' }}>●</span> DCA Allocation
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div style={{ background: 'transparent' }}>
+      {/* Video removed from here - moved to main component */}
     </div>
   );
 };
@@ -144,15 +143,18 @@ const Calculator: React.FC = () => {
   const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [isDisclaimerVisible, setIsDisclaimerVisible] = useState<boolean>(true);
 
   // Dynamic container class based on screen size
   const getContainerClass = () => {
-    if (isTinyMobile) return 'home-container home-container-tiny has-page-disclaimer';
-    if (isSmallMobile) return 'home-container home-container-small has-page-disclaimer';
-    if (isMobile) return 'home-container home-container-mobile has-page-disclaimer';
-    if (isTablet) return 'home-container home-container-tablet has-page-disclaimer';
-    if (isDesktopSmall) return 'home-container home-container-desktop-small has-page-disclaimer';
-    return 'home-container has-page-disclaimer';
+    const disclaimerClass = isDisclaimerVisible ? ' has-page-disclaimer' : '';
+
+    if (isTinyMobile) return `home-container home-container-tiny${disclaimerClass}`;
+    if (isSmallMobile) return `home-container home-container-small${disclaimerClass}`;
+    if (isMobile) return `home-container home-container-mobile${disclaimerClass}`;
+    if (isTablet) return `home-container home-container-tablet${disclaimerClass}`;
+    if (isDesktopSmall) return `home-container home-container-desktop-small${disclaimerClass}`;
+    return `home-container${disclaimerClass}`;
   };
 
   const containerClass = getContainerClass();
@@ -179,7 +181,7 @@ const Calculator: React.FC = () => {
 
   return (
     <div className={containerClass} data-testid="calculator-container">
-      <Disclaimer />
+      <Disclaimer onDismiss={() => setIsDisclaimerVisible(false)} />
 
       <div className="resources-title">
         <a
@@ -193,6 +195,24 @@ const Calculator: React.FC = () => {
         <h1>Stacking Sats</h1>
         <p>Optimizing Bitcoin Accumulation for Institutional Investors</p>
         <PerformanceMetric />
+
+        {/* Video moved here - above the action buttons */}
+        <div className="video-section">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            style={{
+              background: 'transparent',
+              border: '2px solid white',
+              borderRadius: '8px',
+            }}
+          >
+            <source src="./spiral_Jun_25_17_37.webm" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <div className="action-buttons">
           <a
@@ -216,6 +236,18 @@ const Calculator: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer with Hypertrial logo - same style as header */}
+      <footer className="footer-section">
+        <a
+          href="https://hypertrial.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hypertrial-logo-link"
+        >
+          <img src="./hypertrial_logo.png" alt="Hypertrial Logo" className="hypertrial-logo" />
+        </a>
+      </footer>
     </div>
   );
 };
