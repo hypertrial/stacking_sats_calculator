@@ -16,7 +16,7 @@
     }
     
     p {
-      font-size: 1rem;
+      font-size: 0.65rem;
     }
     
     .hypertrial-logo-link:hover {
@@ -33,11 +33,8 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 320px;
-    padding: $spacing-xs $spacing-md;
-    
     .metric-value-compact .percentage-small {
-      font-size: 1.4rem;
+      font-size: 1.2rem; // Reduced from 1.4rem
     }
   }
   
@@ -55,7 +52,7 @@
     }
     
     p {
-      font-size: 1.1rem;
+      font-size: 0.75rem;
     }
     
     .hypertrial-logo-link:hover {
@@ -72,10 +69,8 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 400px;
-    
     .metric-value-compact .percentage-small {
-      font-size: 1.6rem;
+      font-size: 1.3rem; // Reduced from 1.6rem
     }
   }
   
@@ -101,7 +96,7 @@
     }
     
     p {
-      font-size: 1.15rem;
+      font-size: 0.85rem;
     }
     
     .hypertrial-logo-link:hover {
@@ -114,10 +109,8 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 450px;
-    
     .metric-value-compact .percentage-small {
-      font-size: 1.7rem;
+      font-size: 1.4rem; // Reduced from 1.7rem
     }
   }
   
@@ -144,10 +137,8 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 500px;
-    
     .metric-value-compact .percentage-small {
-      font-size: 1.75rem;
+      font-size: 1.45rem; // Reduced from 1.75rem
     }
   }
   
@@ -174,10 +165,8 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 550px;
-    
     .metric-value-compact .percentage-small {
-      font-size: 1.8rem;
+      font-size: 1.5rem; // Reduced from 1.8rem
     }
   }
   
@@ -204,11 +193,8 @@
   }
   
   .performance-metric-compact .performance-box-small {
-    min-width: 600px;
-    padding: $spacing-sm $spacing-xl;
-    
     .metric-value-compact .percentage-small {
-      font-size: 1.9rem;
+      font-size: 1.6rem; // Reduced from 1.9rem
     }
   }
   

@@ -6,7 +6,10 @@ const ProblemStatement: React.FC = () => {
   return (
     <div className="problem-statement">
       <div className="problem-content">
-        <h1>Mathematical Deep Dive (For the Quants)</h1>
+        <h1>Mathematical Deep Dive</h1>
+        <h2 style={{ textAlign: 'center', marginTop: '0.5rem', marginBottom: '2rem' }}>
+          For the Quants
+        </h2>
 
         <p>
           Let <InlineMath math="N" /> be the number of days in one accumulation cycle (12 months).

@@ -267,13 +267,13 @@
 
   // Math blocks
   .math-block {
-    background: linear-gradient(135deg, #f1f3f4 0%, #e8eaed 100%);
-    border: 1px solid #d1d5da;
+    background: transparent;
+    border: none;
     border-radius: $border-radius-sm;
     padding: $spacing-md;
     margin: $spacing-md 0;
     overflow-x: auto;
-    @include card-shadow;
+    box-shadow: none;
     text-align: center;
 
     @media (max-width: $mobile) {
@@ -295,6 +295,33 @@
         
         @media (max-width: $tiny-mobile) {
           font-size: 0.9rem !important;
+        }
+        
+        // Remove any background coloring from KaTeX elements in display mode
+        .base,
+        .strut,
+        .katex-html,
+        .mord,
+        .mrel,
+        .mbin,
+        .mopen,
+        .mclose,
+        .mpunct,
+        .minner,
+        .mspace,
+        .delimsizing,
+        .sizing,
+        .nulldelimiter,
+        .mtight {
+          background: transparent !important;
+          background-color: transparent !important;
+        }
+        
+        // Remove borders and outlines from math elements
+        * {
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
         }
       }
     }
@@ -330,6 +357,33 @@
   .katex {
     font-size: 1em !important;
     color: $secondary-color;
+    
+    // Remove any background coloring from KaTeX elements
+    .base,
+    .strut,
+    .katex-html,
+    .mord,
+    .mrel,
+    .mbin,
+    .mopen,
+    .mclose,
+    .mpunct,
+    .minner,
+    .mspace,
+    .delimsizing,
+    .sizing,
+    .nulldelimiter,
+    .mtight {
+      background: transparent !important;
+      background-color: transparent !important;
+    }
+    
+    // Remove borders and outlines from math elements
+    * {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
   }
 
   // Horizontal rules
