@@ -181,8 +181,8 @@
     border-radius: $border-radius-md;
     padding: $spacing-sm $spacing-xl;
     text-align: center;
-    width: 450px; // Fixed width to match video
-    max-width: 450px;
+    width: 550px; // Fixed width to match video
+    max-width: 550px;
     @include card-shadow;
     position: relative;
     overflow: hidden;
@@ -190,29 +190,29 @@
     
     // Match video widths exactly across all breakpoints
     @media (min-width: #{$tablet + 1px}) and (max-width: $desktop-small) {
-      width: 500px;
-      max-width: 500px;
-    }
-    
-    @media (min-width: #{$desktop-small + 1px}) and (max-width: $desktop-medium) {
-      width: 550px;
-      max-width: 550px;
-    }
-    
-    @media (min-width: #{$desktop-medium + 1px}) {
       width: 600px;
       max-width: 600px;
     }
     
+    @media (min-width: #{$desktop-small + 1px}) and (max-width: $desktop-medium) {
+      width: 650px;
+      max-width: 650px;
+    }
+    
+    @media (min-width: #{$desktop-medium + 1px}) {
+      width: 700px;
+      max-width: 700px;
+    }
+    
     @media (min-width: #{$tiny-mobile + 1px}) and (max-width: $mobile) {
-      width: 400px;
-      max-width: 400px;
+      width: 500px;
+      max-width: 500px;
       padding: $spacing-xs $spacing-lg;
     }
     
     @media (max-width: $tiny-mobile) {
-      width: 320px;
-      max-width: 320px;
+      width: 420px;
+      max-width: 420px;
       padding: $spacing-xs $spacing-md;
       border-radius: $border-radius-sm;
     }

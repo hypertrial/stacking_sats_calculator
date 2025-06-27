@@ -112,22 +112,22 @@
     // Match video/performance box widths on mobile
     @media (max-width: $tiny-mobile) {
       font-size: 0.65rem;
-      width: 320px;
-      max-width: 320px;
+      width: 420px;
+      max-width: 420px;
       line-height: 1.3;
     }
     
     @media (min-width: #{$tiny-mobile + 1px}) and (max-width: $mobile) {
       font-size: 0.75rem;
-      width: 400px;
-      max-width: 400px;
+      width: 500px;
+      max-width: 500px;
       line-height: 1.3;
     }
     
     @media (min-width: #{$mobile + 1px}) and (max-width: $tablet) {
       font-size: 0.85rem;
-      width: 450px;
-      max-width: 450px;
+      width: 550px;
+      max-width: 550px;
       line-height: 1.3;
     }
   }
@@ -141,39 +141,39 @@
     
     video {
       // Match performance box widths exactly
-      width: 450px;
-      max-width: 450px;
+      width: 550px;
+      max-width: 550px;
       height: auto;
       transition: all 0.3s ease-in-out;
       
       // Tablet range - matches performance box
       @media (min-width: #{$tablet + 1px}) and (max-width: $desktop-small) {
-        width: 500px;
-        max-width: 500px;
-      }
-      
-      // Desktop small range - matches performance box  
-      @media (min-width: #{$desktop-small + 1px}) and (max-width: $desktop-medium) {
-        width: 550px;
-        max-width: 550px;
-      }
-      
-      // Desktop medium and up - matches performance box
-      @media (min-width: #{$desktop-medium + 1px}) {
         width: 600px;
         max-width: 600px;
       }
       
+      // Desktop small range - matches performance box  
+      @media (min-width: #{$desktop-small + 1px}) and (max-width: $desktop-medium) {
+        width: 650px;
+        max-width: 650px;
+      }
+      
+      // Desktop medium and up - matches performance box
+      @media (min-width: #{$desktop-medium + 1px}) {
+        width: 700px;
+        max-width: 700px;
+      }
+      
       // Mobile range - matches performance box
       @media (min-width: #{$tiny-mobile + 1px}) and (max-width: $mobile) {
-        width: 400px;
-        max-width: 400px;
+        width: 500px;
+        max-width: 500px;
       }
       
       // Tiny mobile - matches performance box
       @media (max-width: $tiny-mobile) {
-        width: 320px;
-        max-width: 320px;
+        width: 420px;
+        max-width: 420px;
         border-width: 1px;
         border-radius: 6px;
       }
